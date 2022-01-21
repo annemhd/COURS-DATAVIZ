@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="style.css" rel="stylesheet" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        },
+                    },
+                },
+            }
+        </script>
+        <title>Gallica - Mozart, Beethoven & Bach</title>
+    </head>
+    <body>
+        <h1>PROJECT GALLICA</h1>
+        <div class="grid grid-cols-3 gap-4">
+            <div class="col-span-3">
+                <p>
+                    <b>Bach(1685-1750), Mozart(1756-1791) & Beethoven(1770-1827)</b> sont des
+                    compositeurs classique et baroque. <br />
+                    La Bibliothèque nationale de France (Bnf) met à disposition leur documents dans
+                    <a href="#"><b>Gallica</b></a
+                    >, une base de donnée en ligne. On y trouve tout types de documents, de la
+                    photographie à la video, de livres jusqu'aux revus de presse. Aujourd'hui, nous
+                    allons nous pencher sur les documents sonore des nos trois compositeurs.<br />
+                    Il a eu une vie courte mais nous a laissé de quoi bercer nos oreilles pendant
+                    des siecles avec <b>1009</b> documents sonore disponible dans Gallica pour
+                    Mozart. En tête, on retrouve Bach avec <b>1012</b>documents et en derniere
+                    position nous avons Bach et ses <b>884</b> mélodies.
+                </p>
+
+                <div class="screen">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="col-span-3">
+                <p>
+                    Vous trouverez si-dessous une playlist de 20 titres par compositeur. Pour
+                    écouter, cliquer sur un titre.
+                </p>
+            </div>
+            <div>
+                <h2>Bach</h2>
+                <audio id="playerBach" controls src="">
+                    Your browser does not support the
+                    <code>audio</code> element.
+                </audio>
+                <ul id="playlistBach"></ul>
+            </div>
+            <div class="...">
+                <h2>Mozart</h2>
+                <audio id="playerMozart" controls src="">
+                    Your browser does not support the
+                    <code>audio</code> element.
+                </audio>
+                <ul id="playlistMozart"></ul>
+            </div>
+            <div class="...">
+                <h2>Beethoven</h2>
+                <audio id="playerBetho" controls src="">
+                    Your browser does not support the
+                    <code>audio</code> element.
+                </audio>
+                <ul id="playlistBetho"></ul>
+            </div>
+        </div>
+        <div></div>
+
+        <script>
+            const labels = ['Bach', 'Mozart', 'Beethoven']
+
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Nombre de documents sonore disponible dans Gallica',
+                        backgroundColor: '#1E88E5',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [884, 1009, 1012],
+                    },
+                ],
+            }
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {},
+            }
+        </script>
+        <script>
+            const myChart = new Chart(document.getElementById('myChart'), config)
+        </script>
+
+        <script src="gallica.js"></script>
+    </body>
+</html>
